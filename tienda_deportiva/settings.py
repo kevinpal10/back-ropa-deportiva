@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',  # Assuming you are using Django REST Framework
     'corsheaders',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media files settings
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+## Configuración de Amazon S3 para almacenamiento de archivos estáticos y multimedia
+AWS_ACCESS_KEY_ID = "AKIATIPBQLJ6IHHQ4KBP"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "tienda-deportiva-trendy-style"
+AWS_S3_REGION_NAME = "us-east-2"  # cambia según tu región
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
