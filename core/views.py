@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Cliente, Producto, Pedido
@@ -18,6 +20,7 @@ class ProductoViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         print("FILES:", request.FILES)
+        print("AWS KEY:", os.environ.get('AWS_ACCESS_KEY_ID'))
         return super().create(request, *args, **kwargs)
 
 class PedidoViewSet(viewsets.ModelViewSet):
