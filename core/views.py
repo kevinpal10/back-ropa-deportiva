@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from .models import Cliente, Producto, Pedido
 from .serializers import ClienteSerializer, ProductoSerializer, PedidoSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
+import logging
 
 class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
@@ -13,11 +14,12 @@ class ProductoViewSet(viewsets.ModelViewSet):
     serializer_class = ProductoSerializer
     parser_classes = (MultiPartParser, FormParser)
 
-    def create(self, request, *args, **kwargs):
-        print("FILES:", request.FILES)
-        print("DATA:", request.data)
+    logger = logging.getLogger(__name__)
 
-        return super().create(request, *args, **kwargs)
+def create(self, request, *args, **kwargs):
+    logger.error(f"FILES: {request.FILES}")
+    logger.error(f"DATA: {request.data}")
+    return super().create(request, *args, **kwargs)
 
 class PedidoViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
