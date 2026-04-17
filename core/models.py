@@ -15,7 +15,7 @@ class Producto(models.Model):
     precio = models.DecimalField(max_digits=8, decimal_places=2)
     talla = models.CharField(max_length=20)
     stock = models.PositiveIntegerField()
-    imagen = models.ImageField(upload_to='productos/')
+    imagen = models.ImageField(upload_to='media/productos/')
     categoria = models.TextField(max_length=100, null=True, blank=True)
     tipo_persona = models.TextField(max_length=100, null=True, blank=True)
 
