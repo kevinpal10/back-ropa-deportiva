@@ -65,7 +65,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'tienda_deportiva.urls'
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    "x-csrftoken",
+    "accept",
+    "origin",
+]
 
 CORS_ALLOWED_ORIGINS = [
     "https://kevinpal10.github.io"
