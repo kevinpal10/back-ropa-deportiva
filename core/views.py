@@ -16,9 +16,9 @@ class ProductoViewSet(viewsets.ModelViewSet):
 
     logger = logging.getLogger(__name__)
 
-def create(self, request, *args, **kwargs):
-    print("FILES:", request.FILES)
-    return super().create(request, *args, **kwargs)
+    def create(self, request, *args, **kwargs):
+        print("FILES:", request.FILES)
+        return super().create(request, *args, **kwargs)
 
 class PedidoViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
